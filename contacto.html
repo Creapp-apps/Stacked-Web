@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto — Stacked</title>
+    <meta name="description"
+        content="Hablemos de tu local. Completá el formulario y te contactamos en menos de 24hs." />
+    <link rel="icon" type="image/png" href="logo-stacked-vertical.png" />
+    <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <nav>
+            <a href="/" class="nav-logo">
+                <img src="logo-stacked-vertical.png" alt="Stacked" />
+                <span>Stacked</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="funciones.html">Funciones</a></li>
+                <li><a href="precio.html">Precio</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+            </ul>
+            <a href="contacto.html" class="nav-cta">Empezar Ahora</a>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <section id="contacto" class="page-section">
+            <div class="section-header">
+                <span class="section-label">Contacto</span>
+                <h2 class="page-heading">Hablemos de<br />tu local.</h2>
+                <p class="page-subtitle">Completá el formulario y te contactamos en menos de 24hs.</p>
+            </div>
+            <form id="contact-form" class="contact-form" data-reveal>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono / WhatsApp</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+54 11 1234-5678" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="local">Nombre del local</label>
+                        <input type="text" id="local" name="local" placeholder="Mi Burguesería" required />
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"
+                        placeholder="Contanos sobre tu local y qué necesitás..."></textarea>
+                </div>
+                <button type="submit" class="cta-button form-submit">Quiero Stacked →</button>
+                <div id="form-status" class="form-status"></div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Toast Modal -->
+    <div id="toast-overlay" class="toast-overlay">
+        <div class="toast-card">
+            <div class="toast-icon">✓</div>
+            <h3 class="toast-title">¡Excelente!</h3>
+            <p class="toast-message">Hemos recibido tu solicitud, nuestro equipo técnico se contactará pronto con vos.
+            </p>
+            <button class="toast-close" id="toast-close">Entendido</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="logo-stacked-vertical.png" alt="Stacked" />
+                <span>Stacked</span>
+            </div>
+            <p class="footer-copy">© 2025 Stacked. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/pages.js"></script>
+</body>
+
+</html>

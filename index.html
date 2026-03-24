@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stacked — Tu hamburguesería, 100% digital</title>
+  <meta name="description"
+    content="El sistema de gestión integral para hamburgueserías. Menú digital, pedidos online, KDS, caja y delivery. Todo en un solo lugar." />
+  <meta property="og:title" content="Stacked — Tu hamburguesería, 100% digital" />
+  <meta property="og:description"
+    content="El sistema de gestión integral para hamburgueserías. Menú digital, pedidos online, KDS, caja y delivery." />
+  <meta property="og:image" content="logo-stacked-vertical.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <link rel="icon" type="image/png" href="logo-stacked-vertical.png" />
+  <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- ═══════════ 1. LOADER ═══════════ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <img src="logo-stacked-vertical.png" alt="Stacked" class="loader-brand" />
+      <div class="loader-bar-track">
+        <div id="loader-bar"></div>
+      </div>
+      <span id="loader-percent">0%</span>
+    </div>
+  </div>
+
+  <!-- ═══════════ 2. HEADER ═══════════ -->
+  <header class="site-header">
+    <nav>
+      <a href="#" class="nav-logo">
+        <img src="logo-stacked-vertical.png" alt="Stacked" />
+        <span>Stacked</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="funciones.html">Funciones</a></li>
+        <li><a href="precio.html">Precio</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <a href="contacto.html" class="nav-cta">Empezar Ahora</a>
+    </nav>
+  </header>
+
+  <!-- ═══════════ 3. HERO ═══════════ -->
+  <section class="hero-standalone">
+    <div class="hero-inner">
+      <h1 class="hero-heading">
+        <span class="hw">Tu</span>
+        <span class="hw">hamburguesería,</span>
+        <br />
+        <span class="hw accent">100%</span>
+        <span class="hw accent">digital.</span>
+      </h1>
+      <p class="hero-tagline">Menú digital, pedidos online, cocina en vivo, delivery y más.<br />Todo lo que tu local
+        necesita para crecer, en un solo sistema.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════ 4. CANVAS ═══════════ -->
+  <div class="canvas-wrap">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <!-- ═══════════ 5. DARK OVERLAY ═══════════ -->
+  <div id="dark-overlay"></div>
+
+  <!-- ═══════════ 6. MARQUEE ═══════════ -->
+  <div class="marquee-wrap" data-scroll-speed="-30">
+    <span
+      class="marquee-text">STACKED&nbsp;&nbsp;•&nbsp;&nbsp;STACKED&nbsp;&nbsp;•&nbsp;&nbsp;STACKED&nbsp;&nbsp;•&nbsp;&nbsp;STACKED&nbsp;&nbsp;•&nbsp;&nbsp;STACKED&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  </div>
+
+  <!-- ═══════════ 7. SCROLL CONTAINER ═══════════ -->
+  <div id="scroll-container">
+
+    <!-- SECTION 1: Tienda Digital -->
+    <section class="scroll-section section-content align-left" data-enter="5" data-leave="14"
+      data-animation="slide-left">
+      <div class="section-inner">
+        <span class="section-label">001 / Tienda Digital</span>
+        <h2 class="section-heading">Tu carta,<br />reinventada.</h2>
+        <p class="section-body">Tienda Online interactiva con fotos, videos, y descripciones. Tu cliente elige desde su
+          celular, vos recibís el pedido al instante.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Pedidos Online -->
+    <section class="scroll-section section-content align-right" data-enter="16" data-leave="25"
+      data-animation="slide-right">
+      <div class="section-inner">
+        <span class="section-label">002 / Pedidos Online</span>
+        <h2 class="section-heading">Los pedidos,<br />100% tuyos.</h2>
+        <p class="section-body">Tus clientes piden desde tu propia app. Sin comisiones de terceros, sin intermediarios.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: KDS Cocina -->
+    <section class="scroll-section section-content align-left" data-enter="27" data-leave="34" data-animation="fade-up">
+      <div class="section-inner">
+        <span class="section-label">003 / KDS Cocina</span>
+        <h2 class="section-heading">Cocina sincronizada<br />en tiempo real.</h2>
+        <p class="section-body">Pantalla de cocina inteligente. Los pedidos llegan ordenados, priorizados y
+          completamente detallados.
+          Menos errores, más velocidad.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Métricas -->
+    <section class="scroll-section section-content align-right" data-enter="36" data-leave="44"
+      data-animation="slide-right">
+      <div class="section-inner">
+        <span class="section-label">004 / Métricas</span>
+        <h2 class="section-heading">Métricas completas<br />en tiempo real.</h2>
+        <p class="section-body">Ventas, ticket promedio, productos más vendidos y horarios pico. Todo en dashboards
+          claros para que tomes decisiones con datos, no con intuición.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Inventario -->
+    <section class="scroll-section section-content align-left" data-enter="40" data-leave="48" data-animation="fade-up">
+      <div class="section-inner">
+        <span class="section-label">005 / Inventario y Stock inteligente</span>
+        <h2 class="section-heading">Stock que<br />se gestiona solo.</h2>
+        <p class="section-body">Deducción de ingredientes en tiempo real de tu materia prima y stock proyectado, control
+          de insumos en tiempo real.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Redes Sociales -->
+    <section class="scroll-section section-content align-right" data-enter="50" data-leave="58"
+      data-animation="slide-right">
+      <div class="section-inner">
+        <span class="section-label">006 / Redes Sociales y WhatsApp</span>
+        <h2 class="section-heading">Todo en<br />un solo lugar.</h2>
+        <p class="section-body">Integración completa con Instagram y WhatsApp. Manejá tus comunicaciones desde un solo
+          lugar, desde un solo dispositivo.</p>
+      </div>
+    </section>
+
+    <!--
+    <section class="scroll-section section-content align-left" data-enter="60" data-leave="68" data-animation="fade-up">
+      <div class="section-inner">
+        <span class="section-label">007 / Repartidores propios</span>
+        <h2 class="section-heading">Tu flota,<br />tu control.</h2>
+        <p class="section-body">Gestión de rutas, repartidores activos, seguimiento y mensajería en tiempo real.
+          Administrá tu propio sistema de repartos, control total sobre tus pedidos y entregas.</p>
+      </div>
+    </section>
+    -->
+
+    <!-- SECTION 8: Stats -->
+    <section class="scroll-section section-stats" data-enter="60" data-leave="70" data-animation="stagger-up">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number" data-value="60" data-decimals="0">0</span>
+          <span class="stat-suffix">%</span>
+          <span class="stat-label">Eficiencia operativa</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="2" data-decimals="0">0</span>
+          <span class="stat-suffix">min</span>
+          <span class="stat-label">Ticket promedio</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="0" data-decimals="0">0</span>
+          <span class="stat-suffix">%</span>
+          <span class="stat-label">Comisiones ocultas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-value="24" data-decimals="0">0</span>
+          <span class="stat-suffix">/7</span>
+          <span class="stat-label">Soporte real</span>
+        </div>
+      </div>
+    </section>
+
+    <!--
+    <section class="scroll-section section-content align-right" data-enter="80" data-leave="88"
+      data-animation="clip-reveal">
+      <div class="section-inner">
+        <span class="section-label">009 / Delivery</span>
+        <h2 class="section-heading">Tu delivery,<br />tus reglas.</h2>
+        <p class="section-body">Zonas, costos y tiempos de entrega personalizables. Seguimiento en vivo para vos y tu
+          cliente. Sin sorpresas.</p>
+      </div>
+    </section>
+    -->
+
+    <!-- SECTION 10: CTA -->
+    <section class="scroll-section section-cta" data-enter="80" data-leave="90" data-animation="scale-up"
+      data-persist="true">
+      <div class="section-inner cta-inner">
+        <span class="section-label">Stacked</span>
+        <h2 class="section-heading">¿Listo para digitalizar<br />tu local?</h2>
+        <p class="section-body">Unite a los locales que ya están vendiendo más con menos esfuerzo.</p>
+        <a href="contacto.html" class="cta-button">Empezar Gratis →</a>
+        <span class="section-note">¿Qué estás esperando para llevar tu eficiencia al próximo nivel?</span>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CDN libraries (order matters) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
