@@ -79,3 +79,79 @@ if (contactForm) {
         }
     });
 }
+
+// ═══════════ PRICING MODULES ACCORDION ═══════════
+document.querySelectorAll('.module-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasActive = item.classList.contains('active');
+        
+        // Find other modules in the SAME pricing card and deactivate them
+        const card = btn.closest('.pricing-card');
+        if (card) {
+            card.querySelectorAll('.module-item').forEach((i) => {
+                i.classList.remove('active');
+                const content = i.querySelector('.module-content');
+                if (content) content.style.maxHeight = null;
+            });
+        }
+        
+        const content = item.querySelector('.module-content');
+        if (!wasActive) {
+            item.classList.add('active');
+            if (content) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        } else {
+            item.classList.remove('active');
+            if (content) {
+                content.style.maxHeight = null;
+            }
+        }
+    });
+});
+
+// Initialize active modules heights on load
+setTimeout(() => {
+    document.querySelectorAll('.module-item.active').forEach((item) => {
+        const content = item.querySelector('.module-content');
+        if (content) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    });
+}, 150);
+
+// ═══════════ COMMISSION MODAL & TOP BANNER ═══════════
+const commissionModal = document.getElementById('commission-modal');
+const closeCommissionModalBtn = document.getElementById('close-commission-modal');
+const commissionTopBanner = document.getElementById('commission-top-banner');
+
+if (commissionModal) {
+    // Show modal after 3.5 seconds
+    setTimeout(() => {
+        commissionModal.classList.add('active');
+    }, 3500);
+
+    // Close modal event
+    if (closeCommissionModalBtn) {
+        closeCommissionModalBtn.addEventListener('click', () => {
+            // Trigger exit animation
+            commissionModal.classList.add('closing');
+
+            // Wait for transition to finish (500ms)
+            setTimeout(() => {
+                commissionModal.classList.remove('active');
+                commissionModal.classList.remove('closing');
+
+                // Reveal permanent top banner
+                if (commissionTopBanner) {
+                    commissionTopBanner.classList.remove('hidden');
+                    // Add reveal class to trigger slide down and fade in
+                    setTimeout(() => {
+                        commissionTopBanner.classList.add('reveal-banner');
+                    }, 50);
+                }
+            }, 500);
+        });
+    }
+}

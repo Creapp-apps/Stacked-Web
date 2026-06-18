@@ -32,33 +32,273 @@
     <main class="page-main">
         <section id="precio" class="page-section">
             <div class="section-header">
-                <span class="section-label">Precio</span>
-                <h2 class="page-heading">Un plan.<br />Todo incluido.</h2>
-                <p class="page-subtitle">Sin comisiones ocultas · Sin sorpresas · Sin permanencia</p>
+                <span class="section-label">Precios</span>
+                <h2 class="page-heading">Planes a tu medida.<br />Sin comisiones.</h2>
+                <p class="page-subtitle">Elegí el plan que mejor se adapte al tamaño de tu hamburguesería</p>
             </div>
-            <div class="pricing-card" data-reveal>
-                <div class="pricing-badge">Más popular</div>
-                <div class="pricing-amount">
-                    <span class="pricing-currency">$</span>
-                    <span class="pricing-value">80.000</span>
-                    <span class="pricing-period">/mes</span>
+            
+            <!-- Banner Comisión (Permanente, inicialmente oculto) -->
+            <div id="commission-top-banner" class="commission-banner permanent-banner hidden">
+                <div class="commission-badge">Plan Emprendedor</div>
+                <div class="commission-content">
+                    <div class="commission-text">
+                        <h3>¿Estás comenzando?</h3>
+                        <p>¡Comenzá a ganar con Stacked! Ofrecemos un plan exclusivo de <strong>100% a comisión</strong>. Así no tenés que andar sumando gastos fijos operativos 😉</p>
+                    </div>
+                    <a href="contacto.html?plan=comision" class="commission-cta">Consultar Plan Comisión →</a>
                 </div>
-                <p class="pricing-tagline">Todo lo que tu local necesita para crecer</p>
-                <ul class="pricing-features">
-                    <li>✓ Tienda digital ilimitada</li>
-                    <li>✓ Pedidos online sin comisiones</li>
-                    <li>✓ KDS cocina en tiempo real</li>
-                    <li>✓ Métricas y dashboards</li>
-                    <li>✓ Inventario inteligente</li>
-                    <li>✓ WhatsApp e Instagram integrados</li>
-                    <li>✓ Gestión de mesas con QR</li>
-                    <li>✓ Múltiples sucursales</li>
-                    <li>✓ Notificaciones en tiempo real</li>
-                    <li>✓ Soporte 24/7</li>
-                    <li>✓ Actualizaciones incluidas</li>
-                </ul>
-                <a href="contacto.html" class="cta-button pricing-cta">Empezar Ahora →</a>
-                <span class="section-note">¿Qué estás esperando para llevar tu eficiencia al próximo nivel?</span>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Plan Simple -->
+                <div class="pricing-card" data-reveal>
+                    <div class="pricing-badge">Básico</div>
+                    <h3 class="plan-title">Plan Simple</h3>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-value">60.000</span>
+                        <span class="pricing-period">/mes</span>
+                    </div>
+                    <p class="pricing-tagline">Ideal para dar tus primeros pasos digitales y automatizar pedidos</p>
+                    
+                    <div class="plan-modules">
+                        <!-- Gestión -->
+                        <div class="module-item active">
+                            <button class="module-toggle">
+                                <span>Gestión</span>
+                                <span class="toggle-icon">▲</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Vista General</li>
+                                    <li class="enabled">Métricas</li>
+                                    <li class="disabled">Finanzas <span class="upgrade-tag triple">Triple</span></li>
+                                    <li class="disabled">Patrimonio <span class="upgrade-tag triple">Triple</span></li>
+                                    <li class="enabled">Centro de Facturación</li>
+                                    <li class="enabled">Clientes</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Operativo -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Operativo</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Pedidos</li>
+                                    <li class="enabled">Horarios de Entrega</li>
+                                    <li class="enabled">Caja</li>
+                                    <li class="disabled">Inventario <span class="upgrade-tag doble">Doble</span></li>
+                                    <li class="disabled">Salón (Mesas) <span class="upgrade-tag triple">Triple</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Catálogo -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Catálogo</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Menú</li>
+                                    <li class="enabled">Extras</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Marketing (Locked) -->
+                        <div class="module-item module-locked">
+                            <button class="module-toggle">
+                                <span>Marketing</span>
+                                <span class="toggle-icon">🔒</span>
+                            </button>
+                            <div class="module-content">
+                                <div class="lock-info">
+                                    <span>🔒 Requiere Plan Doble</span>
+                                </div>
+                                <ul class="module-features locked-list">
+                                    <li class="disabled">Canjes</li>
+                                    <li class="disabled">Cupones</li>
+                                    <li class="disabled">Novedades</li>
+                                    <li class="disabled">Notificaciones</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contacto.html" class="cta-button pricing-cta">Empezar Ahora →</a>
+                </div>
+
+                <!-- Plan Doble -->
+                <div class="pricing-card popular" data-reveal>
+                    <div class="pricing-badge">Más Popular</div>
+                    <h3 class="plan-title">Plan Doble</h3>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-value">85.000</span>
+                        <span class="pricing-period">/mes</span>
+                    </div>
+                    <p class="pricing-tagline">El control operativo completo para locales que quieren escalar</p>
+                    
+                    <div class="plan-modules">
+                        <!-- Gestión -->
+                        <div class="module-item active">
+                            <button class="module-toggle">
+                                <span>Gestión</span>
+                                <span class="toggle-icon">▲</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Vista General</li>
+                                    <li class="enabled">Métricas</li>
+                                    <li class="disabled">Finanzas <span class="upgrade-tag triple">Triple</span></li>
+                                    <li class="disabled">Patrimonio <span class="upgrade-tag triple">Triple</span></li>
+                                    <li class="enabled">Centro de Facturación</li>
+                                    <li class="enabled">Clientes</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Operativo -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Operativo</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Pedidos</li>
+                                    <li class="enabled">Horarios de Entrega</li>
+                                    <li class="enabled">Caja</li>
+                                    <li class="enabled">Inventario</li>
+                                    <li class="disabled">Salón (Mesas) <span class="upgrade-tag triple">Triple</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Catálogo -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Catálogo</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Menú</li>
+                                    <li class="enabled">Extras</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Marketing -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Marketing</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Canjes</li>
+                                    <li class="enabled">Cupones</li>
+                                    <li class="enabled">Novedades</li>
+                                    <li class="enabled">Notificaciones</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contacto.html" class="cta-button pricing-cta">Empezar Ahora →</a>
+                </div>
+
+                <!-- Plan Triple -->
+                <div class="pricing-card" data-reveal>
+                    <div class="pricing-badge">Premium</div>
+                    <h3 class="plan-title">Plan Triple</h3>
+                    <div class="pricing-amount">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-value">130.000</span>
+                        <span class="pricing-period">/mes</span>
+                    </div>
+                    <p class="pricing-tagline">La experiencia definitiva con salón, mesas y todo habilitado</p>
+                    
+                    <div class="plan-modules">
+                        <!-- Gestión -->
+                        <div class="module-item active">
+                            <button class="module-toggle">
+                                <span>Gestión</span>
+                                <span class="toggle-icon">▲</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Vista General</li>
+                                    <li class="enabled">Métricas</li>
+                                    <li class="enabled">Finanzas</li>
+                                    <li class="enabled">Patrimonio</li>
+                                    <li class="enabled">Centro de Facturación</li>
+                                    <li class="enabled">Clientes</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Operativo -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Operativo</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Pedidos</li>
+                                    <li class="enabled">Horarios de Entrega</li>
+                                    <li class="enabled">Caja</li>
+                                    <li class="enabled">Inventario</li>
+                                    <li class="enabled">Salón (Mesas)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Catálogo -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Catálogo</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Menú</li>
+                                    <li class="enabled">Extras</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Marketing -->
+                        <div class="module-item">
+                            <button class="module-toggle">
+                                <span>Marketing</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="module-content">
+                                <ul class="module-features">
+                                    <li class="enabled">Canjes</li>
+                                    <li class="enabled">Cupones</li>
+                                    <li class="enabled">Novedades</li>
+                                    <li class="enabled">Notificaciones</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contacto.html" class="cta-button pricing-cta">Empezar Ahora →</a>
+                </div>
+            </div>
+
+            <!-- Modal Toast (Comisión Emprendedores) -->
+            <div id="commission-modal" class="commission-modal">
+                <div class="commission-modal-card">
+                    <button class="commission-modal-close" id="close-commission-modal">&times;</button>
+                    <div class="commission-badge">Plan Emprendedor</div>
+                    <div class="commission-modal-body">
+                        <h3>¿Estás comenzando?</h3>
+                        <p>¡Comenzá a ganar con Stacked! Ofrecemos un plan exclusivo de <strong>100% a comisión</strong>. Así no tenés que andar sumando gastos fijos operativos 😉</p>
+                        <a href="contacto.html?plan=comision" class="commission-cta modal-cta">Consultar Plan Comisión →</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -73,7 +313,7 @@
         </div>
     </footer>
 
-    <script src="js/pages.js"></script>
+    <script type="module" src="js/pages.js"></script>
 </body>
 
 </html>

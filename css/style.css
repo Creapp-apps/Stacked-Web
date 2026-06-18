@@ -557,16 +557,34 @@ canvas#canvas {
 }
 
 /* ── PRICING ── */
-.pricing-card {
-  max-width: 480px;
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: start;
+}
+
+.pricing-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
-  padding: 48px 40px;
+  padding: 40px 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 50px rgba(255, 107, 44, 0.12);
 }
 
 .pricing-card::before {
@@ -576,13 +594,44 @@ canvas#canvas {
   left: 0;
   right: 0;
   height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.pricing-card:hover::before {
   background: linear-gradient(90deg, var(--accent), #FF9A44);
+}
+
+/* Plan Doble / Popular Highlight */
+.pricing-card.popular {
+  border-color: rgba(255, 107, 44, 0.3);
+  background: rgba(255, 107, 44, 0.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-card.popular::before {
+  background: linear-gradient(90deg, var(--accent), #FF9A44);
+  height: 4px;
+}
+
+.pricing-card.popular:hover {
+  border-color: rgba(255, 107, 44, 0.6);
+  box-shadow: 0 20px 50px rgba(255, 107, 44, 0.18);
+}
+
+.plan-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 8px;
 }
 
 .pricing-badge {
   display: inline-block;
-  background: var(--accent);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.75rem;
@@ -590,7 +639,15 @@ canvas#canvas {
   border-radius: 50px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover .pricing-badge,
+.pricing-card.popular .pricing-badge {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
 }
 
 .pricing-amount {
@@ -604,50 +661,462 @@ canvas#canvas {
 .pricing-currency {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--accent);
 }
 
 .pricing-value {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--text);
   line-height: 1;
 }
 
 .pricing-period {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
 .pricing-tagline {
   color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 32px;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  min-height: 40px;
+  line-height: 1.4;
 }
 
-.pricing-features {
-  list-style: none;
+/* Accordion Modules container */
+.plan-modules {
+  margin-top: 24px;
+  margin-bottom: 32px;
   text-align: left;
-  margin-bottom: 32px;
 }
 
-.pricing-features li {
-  font-size: 0.95rem;
-  color: var(--text);
-  padding: 10px 0;
+.module-item {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
 }
 
-.pricing-features li:last-child {
+.module-item:last-child {
   border-bottom: none;
+}
+
+.module-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.module-toggle:hover {
+  color: var(--accent);
+}
+
+.module-toggle .toggle-icon {
+  font-size: 0.65rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-muted);
+}
+
+.module-item.active .module-toggle .toggle-icon {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.module-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.module-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 4px 16px 4px;
+}
+
+.module-features li {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.module-features li.enabled {
+  color: rgba(240, 237, 232, 0.9);
+}
+
+.module-features li.enabled::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 8px;
+  display: inline-block;
+  width: 12px;
+}
+
+.module-features li.disabled {
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+
+.module-features li.disabled::before {
+  content: '✕';
+  color: rgba(255, 255, 255, 0.2);
+  margin-right: 8px;
+  display: inline-block;
+  width: 12px;
+}
+
+/* Lock overlay for blocked modules */
+.module-item.module-locked .module-toggle {
+  opacity: 0.5;
+}
+
+.module-item.module-locked .module-toggle:hover {
+  color: var(--text-muted);
+}
+
+.lock-info {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 107, 44, 0.05);
+  border: 1px dashed rgba(255, 107, 44, 0.2);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin: 0 4px 12px 4px;
+  font-weight: 500;
+}
+
+.locked-list {
+  filter: blur(1.5px);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Upgrade tag */
+.upgrade-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.upgrade-tag.doble {
+  color: var(--accent);
+  background: rgba(255, 107, 44, 0.1);
+}
+
+.upgrade-tag.triple {
+  color: #FFB800;
+  background: rgba(255, 184, 0, 0.1);
 }
 
 .pricing-cta {
   width: 100%;
   text-align: center;
 }
+
+/* Pricing Commission Banner */
+.commission-banner {
+  margin-top: 60px;
+  background: linear-gradient(135deg, rgba(255, 107, 44, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px dashed rgba(255, 107, 44, 0.25);
+  border-radius: 24px;
+  padding: 48px 40px 32px 40px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.commission-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 107, 44, 0.08) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.commission-banner:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 15px 40px rgba(255, 107, 44, 0.1);
+}
+
+.commission-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+
+.commission-badge {
+  position: absolute;
+  top: -36px;
+  left: 0;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.65rem;
+  padding: 4px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.commission-text h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.commission-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.commission-text p strong {
+  color: var(--text);
+}
+
+.commission-cta {
+  white-space: nowrap;
+  background: rgba(255, 107, 44, 0.1);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.commission-cta:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* Permanent Banner Specific Styles */
+.commission-banner.permanent-banner {
+  margin-top: 0;
+  margin-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-width: 0;
+  pointer-events: none;
+  transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease,
+              padding 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.commission-banner.permanent-banner.reveal-banner {
+  opacity: 1;
+  max-height: 300px;
+  padding: 48px 40px 32px 40px;
+  margin-bottom: 45px;
+  border: 1px dashed rgba(255, 107, 44, 0.3);
+  pointer-events: auto;
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+/* Pulsing Glow Border Animation */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 107, 44, 0.1);
+    border-color: rgba(255, 107, 44, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 107, 44, 0.35);
+    border-color: rgba(255, 107, 44, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 107, 44, 0.1);
+    border-color: rgba(255, 107, 44, 0.25);
+  }
+}
+
+/* Commission Modal Toast Container */
+.commission-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.commission-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.commission-modal-card {
+  background: linear-gradient(135deg, rgba(20, 20, 25, 0.98) 0%, rgba(10, 10, 12, 0.99) 100%);
+  border: 1px solid rgba(255, 107, 44, 0.25);
+  border-radius: 28px;
+  padding: 48px 40px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 
+              0 0 45px rgba(255, 107, 44, 0.12);
+  transform: scale(0.7) translateY(50px);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.commission-modal.active .commission-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.commission-modal.closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.commission-modal.closing .commission-modal-card {
+  transform: scale(0.8) translateY(-60px) rotate(-4deg);
+}
+
+.commission-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.commission-modal-close:hover {
+  background: rgba(255, 107, 44, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.commission-modal-body {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.commission-modal-body h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.commission-modal-body p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.commission-modal-body p strong {
+  color: var(--text);
+}
+
+.modal-cta {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 1.05rem;
+  padding: 16px 32px;
+}
+
+.modal-cta:hover {
+  background: #ff7d44;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 44, 0.2);
+}
+
+/* Responsiveness for Commission Banner & Modal */
+@media (max-width: 768px) {
+  .commission-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .commission-cta {
+    width: 100%;
+    text-align: center;
+  }
+  .commission-modal-card {
+    padding: 36px 24px;
+  }
+  .commission-modal-body h3 {
+    font-size: 1.5rem;
+  }
+}
+
 
 /* ── FAQ ── */
 .faq-list {
