@@ -121,37 +121,3 @@ setTimeout(() => {
     });
 }, 150);
 
-// ═══════════ COMMISSION MODAL & TOP BANNER ═══════════
-const commissionModal = document.getElementById('commission-modal');
-const closeCommissionModalBtn = document.getElementById('close-commission-modal');
-const commissionTopBanner = document.getElementById('commission-top-banner');
-
-if (commissionModal) {
-    // Show modal after 3.5 seconds
-    setTimeout(() => {
-        commissionModal.classList.add('active');
-    }, 3500);
-
-    // Close modal event
-    if (closeCommissionModalBtn) {
-        closeCommissionModalBtn.addEventListener('click', () => {
-            // Trigger exit animation
-            commissionModal.classList.add('closing');
-
-            // Wait for transition to finish (500ms)
-            setTimeout(() => {
-                commissionModal.classList.remove('active');
-                commissionModal.classList.remove('closing');
-
-                // Reveal permanent top banner
-                if (commissionTopBanner) {
-                    commissionTopBanner.classList.remove('hidden');
-                    // Add reveal class to trigger slide down and fade in
-                    setTimeout(() => {
-                        commissionTopBanner.classList.add('reveal-banner');
-                    }, 50);
-                }
-            }, 500);
-        });
-    }
-}
