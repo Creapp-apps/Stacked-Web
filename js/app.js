@@ -269,20 +269,16 @@
       },
     });
 
-    // ── Navbar pill transform ──
+    // ── Navbar pill scroll effect ──
     gsap.to('.site-header nav', {
-      maxWidth: '800px',
-      borderRadius: '50px',
-      marginTop: '12px',
-      padding: '10px 28px',
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-      backdropFilter: 'blur(20px)',
-      webkitBackdropFilter: 'blur(20px)',
-      border: '1px solid rgba(255,255,255,0.08)',
+      maxWidth: '920px',
+      backgroundColor: 'rgba(10, 10, 14, 0.92)',
+      boxShadow: '0 20px 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 107, 44, 0.2)',
+      borderColor: 'rgba(255, 107, 44, 0.25)',
       scrollTrigger: {
         trigger: 'body',
-        start: '80px top',
-        end: '250px top',
+        start: '60px top',
+        end: '200px top',
         scrub: true,
       },
     });
